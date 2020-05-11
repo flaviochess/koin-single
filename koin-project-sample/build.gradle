@@ -1,6 +1,7 @@
 
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.3.72'
+    id "org.jetbrains.kotlin.kapt" version "1.3.72"
     id 'application'
 }
 
@@ -15,6 +16,9 @@ dependencies {
     compile 'io.javalin:javalin:3.8.0'
     compile 'org.slf4j:slf4j-simple:1.7.28'
     compile 'org.koin:koin-core:2.1.5'
+
+    compile project(':annotation')
+    kapt project(':processor')
 
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
