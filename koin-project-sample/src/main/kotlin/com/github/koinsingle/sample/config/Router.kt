@@ -1,11 +1,13 @@
 package com.github.koinsingle.sample.config
 
+import com.github.koinsingle.annotation.Single
 import com.github.koinsingle.sample.controller.Controller
 import com.github.koinsingle.sample.controller.OtherController
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.get
 import io.javalin.apibuilder.ApiBuilder.path
 
+@Single
 class Router(
         private val controller: Controller,
         private val otherController: OtherController
