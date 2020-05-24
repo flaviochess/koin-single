@@ -7,7 +7,6 @@ import javax.annotation.processing.AbstractProcessor
 import javax.annotation.processing.Processor
 import javax.annotation.processing.RoundEnvironment
 import javax.lang.model.SourceVersion
-import javax.lang.model.element.Element
 import javax.lang.model.element.ElementKind
 import javax.lang.model.element.TypeElement
 
@@ -22,7 +21,7 @@ class SingleProcessor : AbstractProcessor() {
 
     override fun process(annotations: MutableSet<out TypeElement>?, roundEnv: RoundEnvironment): Boolean {
 
-        val elements = mutableListOf<Element>()
+        val elements = mutableListOf<TypeElement>()
 
         roundEnv.getElementsAnnotatedWith(Single::class.java).forEach {
 
@@ -32,7 +31,7 @@ class SingleProcessor : AbstractProcessor() {
                 return false
             }
 
-            elements.add(it)
+            elements.add(it as TypeElement)
         }
 
         GenerateModuleFile(processingEnv).generate(elements)

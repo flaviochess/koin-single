@@ -1,14 +1,15 @@
 package com.github.koinsingle.sample.service
 
 import com.github.koinsingle.annotation.Single
-import com.github.koinsingle.sample.dao.Dao
+import com.github.koinsingle.sample.dao.Daoable
 import com.github.koinsingle.sample.dao.OtherDao
+import com.github.koinsingle.sample.service.interfaces.Serviceable
 
 @Single
 class Service(
-        private val dao: Dao,
+        private val dao: Daoable,
         private val otherDao: OtherDao
-) {
+): Serviceable {
 
-    fun function() = "Service + [${dao.function()}] + [${otherDao.function()}]"
+    override fun function() = "Service + [${dao.function()}] + [${otherDao.function()}]"
 }
