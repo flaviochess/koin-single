@@ -6,7 +6,7 @@ import com.github.koinsingle.sample.service.Service
 
 @Single
 class OtherController(
-        private val service: Service,
+        @Named("secundary") private val service: Service,
         private val otherService: OtherService
 ) {
 
