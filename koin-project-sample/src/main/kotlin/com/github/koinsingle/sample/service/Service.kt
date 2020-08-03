@@ -5,7 +5,7 @@ import com.github.koinsingle.sample.dao.Daoable
 import com.github.koinsingle.sample.dao.OtherDao
 import com.github.koinsingle.sample.service.interfaces.Serviceable
 
-@Single(named = "secondary")
+@Single(named = "firstService")
 class Service(
         private val dao: Daoable,
         private val otherDao: OtherDao
@@ -22,5 +22,13 @@ class Service(
 //        this.msg = msg
 //    }
 
+    override fun function() = "Service + [${dao.function()}] + [${otherDao.function()}]"
+}
+
+@Single(named = "secondService")
+class Service2(
+        private val dao: Daoable,
+        private val otherDao: OtherDao
+): Serviceable {
     override fun function() = "Service + [${dao.function()}] + [${otherDao.function()}]"
 }
